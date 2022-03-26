@@ -1,0 +1,7 @@
+name: BowHPIndicator
+version: '${project.version}'
+main: com.websiteofgames.bowhpindicator.Bowhpindicator
+api-version: 1.18
+authors: [ Mxtery ]
+description: Shows target health when hit
+website: websiteofgames.com

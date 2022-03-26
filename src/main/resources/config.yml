@@ -1,0 +1,8 @@
+Arrow:
+  Sound: true
+  ActionBar: true
+  ChatMessage: true
+Melee:
+  ActionBar: true
+  ChatMessage: true
+
