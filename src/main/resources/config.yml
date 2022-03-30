@@ -5,4 +5,8 @@ Arrow:
 Melee:
   ActionBar: true
   ChatMessage: true
+OtherProjectiles:
+  Sound: false
+  ActionBar: false
+  ChatMessage: false
 

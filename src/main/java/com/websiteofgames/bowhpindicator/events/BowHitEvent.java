@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -60,6 +61,9 @@ public class BowHitEvent implements Listener {
             boolean c = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.ActionBar");
             boolean d = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.Sound");
             boolean e = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.ChatMessage");
+            boolean f = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.ActionBar");
+            boolean g = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.Sound");
+            boolean h = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.ChatMessage");
             if (b){
                 player.sendMessage("§a§l(!) §e" + (event.getEntity()).getName() + " §7is on §c" + roundhp + " §7HP!");
             }
@@ -81,6 +85,7 @@ if (a){
         }, 1);
     }    @EventHandler
     public void onBowHit(ProjectileHitEvent event){
+
 
 
         Bukkit.getScheduler().runTaskLater(Bowhpindicator.getPlugin(), () -> {
@@ -119,18 +124,37 @@ if (a){
                 boolean a = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.Sound");
                 boolean b = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.ActionBar");
                 boolean c = (boolean) Bowhpindicator.getPlugin().getConfig().get("Arrow.ChatMessage");
+                boolean f = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.Sound");
+                boolean g = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.ActionBar");
+                boolean h = (boolean) Bowhpindicator.getPlugin().getConfig().get("OtherProjectiles.ChatMessage");
                 boolean d = (boolean) Bowhpindicator.getPlugin().getConfig().get("Melee.ChatMessage");
                 boolean e = (boolean) Bowhpindicator.getPlugin().getConfig().get("Melee.ActionBar");
-                if (a){
-                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 100, 0.5f);
+                if (event.getEntity() instanceof Arrow){
+                    if (a){
+                        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 100, 0.5f);
 
-                }
+                    }
 
-                if (c){
-                    player.sendMessage("§a§l(!) §e" + (event.getHitEntity()).getName() + " §7is on §c" + roundhp + " §7HP!");
-                }
-                if (b){
-                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§4" +  hp));
+                    if (c){
+                        player.sendMessage("§a§l(!) §e" + (event.getHitEntity()).getName() + " §7is on §c" + roundhp + " §7HP!");
+                    }
+                    if (b){
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§4" +  hp));
+                    }
+                }else{
+
+                    if (f){
+                        player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 100, 0.5f);
+
+                    }
+
+                    if (g){
+                        player.sendMessage("§a§l(!) §e" + (event.getHitEntity()).getName() + " §7is on §c" + roundhp + " §7HP!");
+                    }
+                    if (h){
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§4" +  hp));
+                    }
+
                 }
 
 
